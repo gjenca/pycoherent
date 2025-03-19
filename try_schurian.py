@@ -9,10 +9,10 @@ print('permutation:')
 for x in range(1,n+1):
     print(x,'->',p1(x))
 print('orbits:')
-print(perm.orbits(p1,range(1,n+1)))
+print(perm.orbits_single(p1,range(1,n+1)))
 p2=perm.p_to_p2(p1)
 sq=[(x,y) for x in range(1,n+1) for y in range(1,n+1)]
-orbs=perm.orbits(p2,sq)
+orbs=perm.orbits_single(p2,sq)
 print('colors:')
 for i,orb in enumerate(orbs):
     print(f'{i}:',orb)

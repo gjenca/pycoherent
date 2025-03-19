@@ -2,17 +2,22 @@
 def cyc_to_perm(cyc):
 
     d={}
+    d_inv={}
     for c in cyc:
         for x,y in zip(c,c[1:]+[c[0]]):
             d[x]=y
+            d_inv[y]=x
 
-    def ret_f(x):
-
-        return d[x]
+    def ret_f(x,inverse=False):
+        nonlocal d,d_inv
+        if inverse:
+            return d_inv[x]
+        else:
+            return d[x]
 
     return ret_f
 
-def orbits(p,xs):
+def orbits_single(p,xs):
 
     ret=[]
     unseen=set(xs)
