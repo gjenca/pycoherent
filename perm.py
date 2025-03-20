@@ -63,7 +63,7 @@ def orbits(perms,xs):
                 unseen.remove(fy.y)
             else:
                 break
-        ret.append(tuple(orb))
+        ret.append(tuple(sorted(orb)))
     return ret
 
 def p_to_p2(p):
