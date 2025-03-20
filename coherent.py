@@ -41,11 +41,11 @@ def o_matrix_nodag(orbs):
     d={}
     nc=len(orbs)
     inv=inverses(orbs)
-    val={i:valency(orb) for i,orb in enumerate(orbs)}
+    val={i:sympy.sympify(valency(orb)) for i,orb in enumerate(orbs)}
     for ai in range(nc):
         for bi in range(nc):
             for ci in range(nc):
-                d[(ai,bi,ci)]=sympy.S(nabla(orbs[ai],orbs[bi],orbs[ci]))
+                d[(ai,bi,ci)]=sympy.sympify(nabla(orbs[ai],orbs[bi],orbs[ci]))
                 #d[(ai,bi,ci)]=nabla(orbs[ai],orbs[bi],orbs[ci])
     mat_ret=sympy.zeros(nc,nc)
     for ai in range(nc):
@@ -54,6 +54,27 @@ def o_matrix_nodag(orbs):
                 for ci in range(nc):
                     mat_ret[ai,di]+=d[(bi,ci,di)]*(d[(inv[bi],ai,ci)]/val[inv[bi]])
                     #mat_ret[ai,di]+=d[(bi,ci,di)]*(d[(ai,inv[ci],bi)]/val[ci])
+    return mat_ret
+
+def o_matrix_dag(orbs):
+
+    d={}
+    nc=len(orbs)
+    inv=inverses(orbs)
+    val={i:sympy.sympify(valency(orb)) for i,orb in enumerate(orbs)}
+    for ai in range(nc):
+        for bi in range(nc):
+            for ci in range(nc):
+                d[(ai,bi,ci)]=sympy.sympify(nabla(orbs[ai],orbs[bi],orbs[ci]))
+                #d[(ai,bi,ci)]=nabla(orbs[ai],orbs[bi],orbs[ci])
+    mat_ret=sympy.zeros(nc,nc)
+    for ai in range(nc):
+        for di in range(nc):
+            for bi in range(nc):
+                for ci in range(nc):
+                    mat_ret[ai,di]+=\
+                            sympy.sqrt((val[ai]*val[di]))/(val[bi]*val[ci])*\
+                            nabla(orbs[bi],orbs[ci],orbs[ai])*nabla(orbs[bi],orbs[ci],orbs[di])
     return mat_ret
 
 
