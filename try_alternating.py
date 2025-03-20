@@ -2,17 +2,13 @@ import sympy
 import coherent
 import perm
 
-cycles=[[1,2,3],[4,5]]
-p1=perm.cyc_to_perm(cycles)
-n=sum(len(c) for c in cycles)
-print('permutation:')
-for x in range(1,n+1):
-    print(x,'->',p1(x))
-print('orbits:')
-print(perm.orbits([p1],range(1,n+1)))
-p2=perm.p_to_p2(p1)
+n=4
+ps=[]
+for k in range(3,n+1):
+    p=perm.cyc_to_perm([[1,2,k]],n=n)
+    ps.append(perm.p_to_p2(p))
 sq=[(x,y) for x in range(1,n+1) for y in range(1,n+1)]
-orbs=perm.orbits_single(p2,sq)
+orbs=perm.orbits(ps,sq)
 print('colors:')
 for i,orb in enumerate(orbs):
     print(f'{i}:',orb)
