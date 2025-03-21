@@ -2,7 +2,7 @@ import sympy
 import coherent
 import perm
 
-cycles=[[1,2,3,4],[5,6,7,8,9,10]]
+cycles=perm.cycle_type_to_cyc([2,2,3,3])
 p1=perm.cyc_to_perm(cycles)
 n=sum(len(c) for c in cycles)
 print('permutation:')

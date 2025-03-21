@@ -1,4 +1,13 @@
 
+def cycle_type_to_cyc(cycle_type):
+
+    ret=[]
+    n=1
+    for c in cycle_type:
+       ret.append(list(range(n,n+c)))
+       n=n+c
+    return ret
+
 def cyc_to_perm(cyc,n=None):
     """Converts a list of cycles (list of lists of numbers) to a permutation function [1..n]->[1..n]
     

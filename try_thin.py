@@ -2,7 +2,7 @@ import sympy
 import coherent
 import perm
 
-n=4
+n=3
 orbs=[((i,j),) for i in range(1,n+1) for j in range(1,n+1)]
 
 O_nondag=coherent.o_matrix_nodag(orbs)
