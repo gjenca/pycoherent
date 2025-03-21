@@ -2,11 +2,15 @@ import sympy
 import coherent
 import perm
 
-n=3
+def hamming(x,y):
+
+    return (x^y).bit_count()
+
+n=7
 #orb1=tuple((i,i) for i in range(1,n+1))
 #orb2=tuple((i,j) for i in range(1,n+1) for j in range(1,n+1) if i!=j)
 #orbs=[orb1,orb2]
-orbs=coherent.from_colorfun(range(1,n+1),lambda x,y: x==y)
+orbs=coherent.from_colorfun(range(0,2**n),hamming)
 print('colors:')
 for i,orb in enumerate(orbs):
     print(f'{i}:',orb)
