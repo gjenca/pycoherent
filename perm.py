@@ -1,6 +1,15 @@
 
 def cyc_to_perm(cyc,n=None):
+    """Converts a list of cycles (list of lists of numbers) to a permutation function [1..n]->[1..n]
+    
+    Parameters:
+    cyc: List[List[int]] -- list of cycles, the numbers should be from [1..n]
+    n: int or None -- n (allows to skip 1-cycles in cyc)
 
+    Returns:
+    A permutation function, with an optional bool argument 'inverse', to signal
+    that an inverse permutation shooul be performed.
+"""
     d={}
     d_inv={}
     if n:
@@ -28,6 +37,8 @@ class FoundY(Exception):
         self.y=y
 
 def orbits_single(p,xs):
+    """Orbits of a single permutation
+    """
 
     ret=[]
     unseen=set(xs)
