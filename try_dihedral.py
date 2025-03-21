@@ -2,7 +2,7 @@ import sympy
 import coherent
 import perm
 
-n=5
+n=4
 ps=[]
 cycles_s=[list(range(2,n+1))+[1]]
 print(cycles_s)

@@ -2,7 +2,7 @@ import sympy
 import coherent
 import perm
 
-n=4
+n=3
 orb1=tuple((i,i) for i in range(1,n+1))
 orb2=tuple((i,j) for i in range(1,n+1) for j in range(1,n+1) if i!=j)
 orbs=[orb1,orb2]

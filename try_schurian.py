@@ -2,7 +2,7 @@ import sympy
 import coherent
 import perm
 
-cycles=[[1,2,3],[4,5]]
+cycles=[[1,2,3,4],[5,6,7,8,9,10]]
 p1=perm.cyc_to_perm(cycles)
 n=sum(len(c) for c in cycles)
 print('permutation:')
@@ -24,6 +24,8 @@ for i,orb in enumerate(orbs):
 O_nondag=coherent.o_matrix_nodag(orbs)
 print('O_nondag matrix:')
 print(sympy.pretty(O_nondag))
+if (O_nondag==O_nondag.T):
+    print('Symmetric!')
 print('Spectrum nondag:')
 print(O_nondag.eigenvals())
 O_dag=coherent.o_matrix_dag(orbs)
